@@ -4,6 +4,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/usuarios', (req, res) =>{res.json('Rotas usuarios!')})
+app.post('/usuarios', (req, res) => { res.json("ROTA USUARIO!") })
 
-app.listen(3000, ()=> {console.log('API INICIADA!')})
+
+app.listen(3000, () => { console.log('API INICIADA!') })
