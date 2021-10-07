@@ -4,6 +4,9 @@ import bcrypt from "bcrypt"
 async function cadastrarUsuario(req, res, next) {
     try {
         let usuario = req.body;
+        if(!usuario.nome || !usuario.nomeDeUsuario || !usuario.senha){
+            throw new Error('Todos os campos são obrigatórios!')
+        }
         const salt = await bcrypt.genSalt(10)
         usuario.senha = await bcrypt.hash(usuario.senha, salt)
 
