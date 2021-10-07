@@ -1,8 +1,11 @@
 import usuarioService from "../services/usuario.service.js"
+import bcrypt from "bcrypt"
 
 async function cadastrarUsuario(req, res, next) {
     try {
         let usuario = req.body;
+        const salt = await bcrypt.genSalt(10)
+        usuario.senha = await bcrypt.hash(usuario.senha, salt)
 
         await usuarioService.cadastrarUsuario(usuario)
 

@@ -1,8 +1,9 @@
-import { conexao } from "./db.js";
+import { conexao } from "./db.js"
 import UsuarioSchema from "../schemas/usuario.schema.js"
 
 async function cadastrarUsuario(usuario) {
     try {
+        
         const mongoose = await conexao()
         const Usuario = mongoose.model("Usuario", UsuarioSchema)
         usuario = new Usuario(usuario)
